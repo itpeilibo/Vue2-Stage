@@ -1,4 +1,4 @@
-import { observer } from "./observer/index";
+import Vue from ".";
 
 export function initState (vm) {
     let opts = vm.$options
@@ -31,9 +31,5 @@ function initData (vm)  {
     // console.log('data初始化'); // (1) 对象 (2) 函数
 
     let data = vm.$options.data
-    data = vm._data = typeof data === 'function' ? data.call(vm) : data
-    // data数据进行劫持
-    observer(data)
+    data = typeof data === 'function' ? data.call(vm) : data
 }
-
-// data {} (1) 对象 (2) 数组 

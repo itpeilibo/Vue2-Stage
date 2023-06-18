@@ -13,20 +13,18 @@
         // umd Vue
         // console.log(Vue);
         // 响应式 vue2 mvvm
-        let vm = new Vue ({
+        new Vue ({
             el: '#app',
             // data: {
 
             // },
             data () {
+                    console.log(this);
                 return {
-                    msg: 'hello',
-                    a: { b : 20 }
                 }
             }
            
         })
-        console.log('vm',vm._data.a = { c : 30});
     </script>
 
 </body>
