@@ -47,7 +47,8 @@
             if (Array.isArray(value)) { // list: [1,2,3]
                 console.log('数组'); 
                 value.__proto__ = ArrayMethods;
-
+                // 如果你是数组对象
+                this.observeArray(value);
             } else {
             this.walk(value); // 遍历
             }
@@ -61,6 +62,9 @@
                 let value = data[key];
                 defineReactive(data,key,value);
             } 
+        }
+        observeArray(value) { // 
+
         }
     }
     // 对对象中的属性进行劫持

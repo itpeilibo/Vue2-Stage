@@ -33,7 +33,7 @@ class Observer {
             defineReactive(data,key,value)
         } 
     }
-    observeArray(value) { // 
+    observeArray(value) {
 
     }
 }

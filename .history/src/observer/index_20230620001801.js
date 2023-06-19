@@ -33,9 +33,6 @@ class Observer {
             defineReactive(data,key,value)
         } 
     }
-    observeArray(value) { // 
-
-    }
 }
 // 对对象中的属性进行劫持
 function defineReactive (data, key, value) { // { a: { b: 1}}

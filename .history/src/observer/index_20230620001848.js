@@ -18,7 +18,7 @@ class Observer {
             console.log('数组'); 
             value.__proto__ = ArrayMethods
             // 如果你是数组对象
-            this.observeArray(value)
+            // this.observeArray(value)
         } else {
         this.walk(value) // 遍历
         }
