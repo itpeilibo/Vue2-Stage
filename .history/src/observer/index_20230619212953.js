@@ -16,7 +16,7 @@ class Observer {
         // 判断数据
         if (Array.isArray(value)) { // list: [1,2,3]
             console.log('数组'); 
-            value.__proto__ = ArrayMethods
+            value.__proto = ArrayMethods
 
         } else {
         this.walk(value) // 遍历
@@ -59,6 +59,6 @@ function defineReactive (data, key, value) { // { a: { b: 1}}
 // 2 遍历 {a: 1, b: 2, obj: {}}
 // 3 get set
 
-// 2 数组 { list: [1,2,3,4], arr: [ {a:1}]}
-// 方法函数劫持， 重写数组方法 arr.push(1)
+// 数组 { list: [1,2,3,4], arr: [ {a:1}]}
+// 方法函数劫持， 重写数组方法 arr.push()
 

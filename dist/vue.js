@@ -4,6 +4,32 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Vue = factory());
 })(this, (function () { 'use strict';
 
+    // 重写数组 
+    // (1) 获取原来的数组方法
+
+    let oldArrayProtoMethods = Array.prototype;
+
+    // (2) 继承 
+    let ArrayMethods = Object.create(oldArrayProtoMethods);
+
+    // 劫持
+
+    let methods = [
+        "push",
+        "pop",
+        "unshift",
+        "shift",
+        "splice"
+    ];
+
+    methods.forEach (item => {
+        ArrayMethods[item] = function (...args) { // {list: []} list.push()
+            console.log('劫持数组');
+            let result = oldArrayProtoMethods[item].apply(this, args);
+            return result
+        };
+    });
+
     function observer (data) {
         // 1  判断
         if (typeof data != 'object' || data === null) {
@@ -16,8 +42,15 @@
 
     class Observer {
         constructor (value) {
+            console.log('数据aaa',value);
+            // 判断数据
+            if (Array.isArray(value)) { // list: [1,2,3]
+                console.log('数组'); 
+                value.__proto__ = ArrayMethods;
 
+            } else {
             this.walk(value); // 遍历
+            }
         }
         walk(data) {  // {msg: 'hello'}
             let keys = Object.keys(data);
@@ -56,9 +89,12 @@
     // 2 遍历 {a: 1, b: 2, obj: {}}
     // 3 get set
 
+    // 2 数组 { list: [1,2,3,4], arr: [ {a:1}]}
+    // 方法函数劫持， 重写数组方法 arr.push(1)
+
     function initState (vm) {
         let opts = vm.$options;
-        console.log('opts',opts);
+        // console.log('opts',opts);
         // 判断
         if (opts.props) ;
         if (opts.data) {

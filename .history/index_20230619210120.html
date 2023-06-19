@@ -19,16 +19,15 @@
 
             // },
             data () {
-                console.log(this);
                 return {
                     msg: 'hello',
                     a: { b : 20 },
-                    list: [1, 2, 3]
+                    list: [1, 2, 4]
                 }
             }
            
         })
-        console.log('vm',vm._data.list.push(10)); 
+        console.log('vm',vm._data.a = { c : 30 });
     </script>
 
 </body>

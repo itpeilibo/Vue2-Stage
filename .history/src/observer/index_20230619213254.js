@@ -15,7 +15,7 @@ class Observer {
         console.log('数据aaa',value);
         // 判断数据
         if (Array.isArray(value)) { // list: [1,2,3]
-            console.log('数组'); 
+            console.log('数组',ArrayMethods); 
             value.__proto__ = ArrayMethods
 
         } else {
